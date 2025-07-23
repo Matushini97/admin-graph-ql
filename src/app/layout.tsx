@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 import './globals.scss'
+import AppProvider from '@/providers/app-provider'
 
 export const metadata: Metadata = {
   title: 'Admin Panel GraphQL',
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppProvider>{children}</AppProvider>
+      </body>
     </html>
   )
 }
