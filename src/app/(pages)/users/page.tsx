@@ -1,10 +1,10 @@
 'use client'
 
 import { useGetUsersQuery } from '@/api/queries/user-list.generated'
-import { Loader, Typography } from '@vibe-samurai/visual-ui-kit'
+import { Loader, Table, TableHeader } from '@vibe-samurai/visual-ui-kit'
 import React from 'react'
 
-import s from './users-page.module.scss'
+import { COLUMNS } from '@/constants/table-columns'
 
 export default function Users() {
   const { data, loading } = useGetUsersQuery()
@@ -16,18 +16,23 @@ export default function Users() {
   }
 
   return (
-    <ul>
-      {usersList?.map(({ userName, id, email }) => {
-        return (
-          <li key={id}>
-            <div className={s.userListItem}>
-              <Typography>{id}</Typography>
-              <Typography>{userName}</Typography>
-              <Typography>{email}</Typography>
-            </div>
-          </li>
-        )
-      })}
-    </ul>
+    <Table.Root>
+      <TableHeader columns={COLUMNS} />
+      <Table.Body>
+        {usersList?.map(({ id, createdAt, profile, userName, userBan }) => (
+          <Table.Row key={id}>
+            <Table.Cell>
+              {userBan ? 'BANNED' : ''}
+              {id}
+            </Table.Cell>
+            <Table.Cell>{userName}</Table.Cell>
+            <Table.Cell>
+              {profile.firstName} {profile.lastName}
+            </Table.Cell>
+            <Table.Cell>{createdAt}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table.Root>
   )
 }
