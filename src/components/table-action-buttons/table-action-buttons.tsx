@@ -37,15 +37,15 @@ export const TableActionButtons = ({ id, userBan }: Props) => {
 
   return (
     <div className={s.buttons}>
-      <Button variant="secondary" onClick={removeHandler}>
+      <Button variant="secondary" onClick={removeHandler} title={'Удалить пользователя'}>
         <PersonRemoveIcon />
       </Button>
       {userBan ? (
-        <Button variant="secondary" onClick={unbanHandler}>
+        <Button variant="secondary" onClick={unbanHandler} title={'Разблокировать'}>
           <UnBlockIcon />
         </Button>
       ) : (
-        <Button variant="secondary" onClick={banHandler}>
+        <Button variant="secondary" onClick={banHandler} title={'Заблокировать'}>
           <BlockIcon />
         </Button>
       )}
