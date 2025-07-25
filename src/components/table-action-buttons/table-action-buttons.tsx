@@ -25,14 +25,17 @@ export const TableActionButtons = ({ id, userBan }: Props) => {
   const [unbanUser] = useUnbanUserMutation()
   const [removeUser] = useRemoveUserMutation()
 
+  const defaultVars = { userId: id }
+  const defaultMutationOptions = { variables: defaultVars, refetchQueries: REFETCH_DATA }
+
   const banHandler = () => {
-    banUser({ variables: { userId: id, banReason: BAN_REASON }, refetchQueries: REFETCH_DATA })
+    banUser({ variables: { ...defaultVars, banReason: BAN_REASON }, refetchQueries: REFETCH_DATA })
   }
   const unbanHandler = () => {
-    unbanUser({ variables: { userId: id }, refetchQueries: REFETCH_DATA })
+    unbanUser(defaultMutationOptions)
   }
   const removeHandler = () => {
-    removeUser({ variables: { userId: id }, refetchQueries: REFETCH_DATA })
+    removeUser(defaultMutationOptions)
   }
 
   return (
