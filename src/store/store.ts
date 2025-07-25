@@ -1,6 +1,7 @@
 'use client'
 
 import initSliceReducer, { initSlice } from '@/redux/slices/init-slice'
+import authSliceReducer, { authSlice } from '@/redux/slices/auth-slice'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 export const store = configureStore({
   reducer: {
     [initSlice.name]: initSliceReducer,
+    [authSlice.name]: authSliceReducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware(),
 })

@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 
 import './globals.scss'
 import AppProvider from '@/providers/app-provider'
+import { MainHeader } from '@/components/main-header/main-header'
+import { SideNavBar } from '@/components/side-nav-bar/side-nav-bar'
 
 export const metadata: Metadata = {
   title: 'Admin Panel GraphQL',
@@ -16,7 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <MainHeader />
+          <SideNavBar />
+          <div className="content">{children}</div>
+        </AppProvider>
       </body>
     </html>
   )

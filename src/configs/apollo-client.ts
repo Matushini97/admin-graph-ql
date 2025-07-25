@@ -1,3 +1,4 @@
+import { BASIC_TOKEN } from '@/constants/token'
 import { ApolloClient, createHttpLink, InMemoryCache, split } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
@@ -9,7 +10,7 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext((_, { headers }) => {
-  const basicToken = localStorage.getItem('basicToken')
+  const basicToken = localStorage.getItem(BASIC_TOKEN)
 
   return {
     headers: {
@@ -23,7 +24,7 @@ const wsLink = new GraphQLWsLink(
   createClient({
     url: 'wss://inctagram.work/api/v1/graphql',
     connectionParams: () => {
-      const basicToken = localStorage.getItem('basicToken')
+      const basicToken = localStorage.getItem(BASIC_TOKEN)
 
       return {
         Authorization: `Basic ${basicToken}`,
