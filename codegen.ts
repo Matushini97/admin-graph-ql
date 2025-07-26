@@ -1,7 +1,8 @@
 import type { CodegenConfig } from '@graphql-codegen/cli'
+import './env-config.ts'
 
 const config: CodegenConfig = {
-  schema: 'https://inctagram.work/api/v1/graphql',
+  schema: process.env.NEXT_PUBLIC_BASE_URL,
   documents: ['./src/**/*.{ts,tsx,graphql}', '!**/*.generated.ts'],
   ignoreNoDocuments: true,
 

@@ -16,6 +16,7 @@
   "dependencies": {
     "@apollo/client": "^3.13.8",
     "@hookform/resolvers": "^4.0.0",
+    "@next/env": "^15.4.4",
     "@reduxjs/toolkit": "^2.5.1",
     "@siberiacancode/reactuse": "^0.2.25",
     "@vibe-samurai/visual-ui-kit": "^0.0.36",

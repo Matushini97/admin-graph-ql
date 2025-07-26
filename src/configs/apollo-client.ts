@@ -6,7 +6,7 @@ import { getMainDefinition } from '@apollo/client/utilities'
 import { createClient } from 'graphql-ws'
 
 const httpLink = createHttpLink({
-  uri: 'https://inctagram.work/api/v1/graphql',
+  uri: process.env.NEXT_PUBLIC_BASE_URL,
 })
 
 const authLink = setContext((_, { headers }) => {
