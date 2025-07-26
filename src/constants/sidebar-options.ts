@@ -9,7 +9,7 @@ import {
 } from '@vibe-samurai/visual-ui-kit'
 
 export const ROUTES = Object.freeze({
-  users: '/users',
+  users: '/',
   stats: '/stats',
   payments: '/payments',
   posts: '/posts',
